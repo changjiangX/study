@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="lib/js/jquery-1.11.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/addon/search/searchcursor.min.js"></script>
+<script src="lib/package/lib/mergely.js" type="text/javascript"></script>
+<link rel="stylesheet" media="all" href="lib/package/lib/mergely.css" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        $(document).ready(function () {
+            //初始化代码对比区域
+            $('#mergely').mergely({
+                license: 'lgpl-separate-notice',
+                width: 1200,
+                height: 350,
+                wrap_lines: true,
+                line_numbers: false,
+                lhs: function (setValue) {
+                    setValue("the quick red fox\njumped over the hairy dog"); //初始化左边区域
+                },
+                rhs: function (setValue) {
+                    setValue("the quick brown fox\njumped over the lazy dog"); //初始化右边区域
+                }
+            });
+
+            //只读，不可编辑，根据个人需要，要或不要
+            $('#mergely').mergely('cm', 'lhs').options.readOnly = true;
+            $('#mergely').mergely('cm', 'rhs').options.readOnly = true;
+        });
+    </script>
+</head>
+
+
+
+<body>
+
+        <div class="mergely-full-screen-8">
+            <div class="mergely-resizer">
+                <div id="mergely"></div>
+            </div>
+        </div>
+
+</body>
+</html>
